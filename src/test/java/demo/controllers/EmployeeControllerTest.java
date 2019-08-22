@@ -44,7 +44,9 @@ public class EmployeeControllerTest {
         this.mockMvc.perform(post("/employees")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
                 .content("{\"name\":\"Harry Potter\",\"role\":\"Rubbish Wizard\"}"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Harry Potter"))
+                .andExpect(jsonPath("$.role").value("Rubbish Wizard"));
     }
 
     @Test
@@ -67,14 +69,15 @@ public class EmployeeControllerTest {
         this.mockMvc.perform(put("/employees/10")
                 .contentType(MediaType.APPLICATION_JSON_UTF8_VALUE)
                 .content("{\"name\":\"Harry Potter\",\"role\":\"Rubbish Wizard\"}"))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name").value("Harry Potter"))
+                .andExpect(jsonPath("$.role").value("Rubbish Wizard"));
     }
 
     @Test
     public void deleteEmployee() throws Exception {
         final var employee = new Employee("Bob", "Builder");
         employeeRepository.saveAndFlush(employee);
-        this.mockMvc.perform(delete(format("/employees/%d", employee.getId())))
-                .andExpect(status().isOk());
+        this.mockMvc.perform(delete(format("/employees/%d", employee.getId()))).andExpect(status().isOk());
     }
 }
