@@ -56,6 +56,7 @@ public class EmployeeControllerTest {
                 .andExpect(jsonPath("$.name").value("Harry Potter"))
                 .andExpect(jsonPath("$.role").value("Rubbish Wizard"));
     }
+}
 ```
 
 These tests verify that the initial entries loaded in the database are returned and when we add a new entry
@@ -66,8 +67,8 @@ to highlight on how we can pull out fields of interest very easily with the fram
 
 ###### Beware, here be dragons!
 _Now, as mentioned before, we are committing a few subtle faux pas in our approach. By virtue of the ordering_
-_and use of `List` collections, should the second test be run first (as Junit guarantees no order of execution)_
-_we don't cause the first test to break. This may also be described as dumb luck. We will look in the next_
+_and use of `List` as our collection, should the second test be run first (as Junit guarantees no order of execution)_
+_we don't cause the first test to break. This may also be described as dumb luck or a bad test. We will look in the next_
 _challenge to correct this!_
 
 ##### And now for the rest
