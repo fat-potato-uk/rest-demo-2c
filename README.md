@@ -71,6 +71,7 @@ _and use of `List` as our collection, should the second test be run first (as Ju
 _we don't cause the first test to break. This may also be described as dumb luck or a bad test. We will look in the next_
 _challenge to correct this!_
 
+
 ##### And now for the rest
 
 For this challenge, look to write tests for all the other endpoints. You can check your coverage in intelliJ
@@ -78,3 +79,6 @@ by using the little shield icon in the run bar:
 
 ![Icon Location](IconLocation.png?raw=true "Coverage Button")
 
+If you come across issues based on ordering (which might happen depending on the content of
+your tests), you can use the `@FixMethodOrder(MethodSorters.NAME_ASCENDING)` to specify an 
+order to your tests (which is very very bad practise by the way :))
